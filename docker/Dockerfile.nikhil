@@ -12,14 +12,17 @@
 #
 #
 
-
-
 ARG sourceimage=freqtradeorg/freqtrade
-#ARG sourcetag=develop_freqai
-ARG sourcetag=develop_freqairl
+ARG sourcetag=develop_freqai
+#ARG sourcetag=stable_freqaitorch
+#ARG sourcetag=develop_freqairl
+#ARG sourcetag=develop
 FROM ${sourceimage}:${sourcetag}
+
 
 # Install dependencies
 COPY requirements-nikhil.txt /freqtrade/
+
+#RUN pip install "freqtrade[freqai]" --no-cache-dir
 
 RUN pip install -r requirements-nikhil.txt --user --no-cache-dir
